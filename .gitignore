@@ -1,0 +1,17 @@
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Backend
+backend/.gradle/
+backend/build/
+backend/*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Env
+.env
+application-local.yml

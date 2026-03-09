@@ -1,0 +1,212 @@
+/* 전역 리셋 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #e8e8e8;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  max-width: none;
+  text-align: unset;
+}
+
+/* 전체 페이지 레이아웃 */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 40px 24px;
+}
+
+/* 친구 타이머 영역 */
+.friends-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.friends-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #999;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.friends-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 친구 타이머 카드 */
+.friend-window {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.06);
+  overflow: hidden;
+  width: 190px;
+}
+
+.friend-app {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.friend-clock-wrap {
+  width: 140px;
+  height: 140px;
+}
+
+.friend-name {
+  margin-left: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #555;
+}
+
+/* 맥 스타일 윈도우 */
+.window {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  width: fit-content;
+}
+
+.window-bar {
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.traffic-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.traffic-dot.red    { background: #ff5f57; }
+.traffic-dot.yellow { background: #febc2e; }
+.traffic-dot.green  { background: #28c840; }
+
+/* 앱 본문 */
+.app {
+  padding: 28px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* 시간 표시 */
+.time-section { text-align: center; }
+
+.time-display {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.mode-label {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #e8716a;
+}
+.mode-label.break { color: #0f9b8e; }
+
+/* 클락페이스 */
+.clock-wrap {
+  position: relative;
+  width: 240px;
+  height: 240px;
+}
+
+.clock-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* 중앙 재생 버튼 */
+.center-btn {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.center-btn:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.18); transform: scale(1.05); }
+.center-btn:active { transform: scale(0.97); }
+
+/* 세션 점 */
+.session-dots { display: flex; gap: 10px; }
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  transition: background 0.3s ease;
+}
+.dot.filled { background: #e8716a; }
+.dot.filled.break { background: #0f9b8e; }
+
+/* 하단 버튼 */
+.controls { display: flex; gap: 10px; width: 100%; }
+
+.btn {
+  flex: 1;
+  padding: 11px 0;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fafafa;
+  color: #333;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn:hover { background: #f0f0f0; }
+.btn:active { transform: scale(0.98); }
+
+.btn-accent {
+  background: #e8716a;
+  border-color: #e8716a;
+  color: white;
+  font-weight: 600;
+}
+.btn-accent:hover { background: #d96059; }
+.btn-accent.break { background: #0f9b8e; border-color: #0f9b8e; }
+.btn-accent.break:hover { background: #0d8a7e; }
