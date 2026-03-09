@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>포모도로 타이머</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">포모도로 타이머</h1>
+
+    <div class="timer-ring">
+      <svg class="progress-ring" viewBox="0 0 200 200">
+        <circle class="progress-ring__bg" cx="100" cy="100" r="90"/>
+        <circle id="progress-circle" class="progress-ring__fill" cx="100" cy="100" r="90"/>
+      </svg>
+      <div class="timer-content">
+        <span id="mode-label">집중 시간</span>
+        <span id="time-display">25:00</span>
+      </div>
+    </div>
+
+    <div id="session-dots" class="session-dots"></div>
+
+    <div class="controls">
+      <button id="start-btn" class="btn btn-primary" onclick="toggleTimer()">시작</button>
+      <button class="btn btn-secondary" onclick="resetTimer()">리셋</button>
+      <button class="btn btn-secondary" onclick="switchMode()">모드 전환</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
