@@ -7,26 +7,36 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1 class="title">포모도로 타이머</h1>
-
-    <div class="timer-ring">
-      <svg class="progress-ring" viewBox="0 0 200 200">
-        <circle class="progress-ring__bg" cx="100" cy="100" r="90"/>
-        <circle id="progress-circle" class="progress-ring__fill" cx="100" cy="100" r="90"/>
-      </svg>
-      <div class="timer-content">
-        <span id="mode-label">집중 시간</span>
-        <span id="time-display">25:00</span>
-      </div>
+  <div class="window">
+    <div class="window-bar">
+      <span class="traffic-dot red"></span>
+      <span class="traffic-dot yellow"></span>
+      <span class="traffic-dot green"></span>
     </div>
 
-    <div id="session-dots" class="session-dots"></div>
+    <div class="app">
+      <div class="time-section">
+        <div id="time-display" class="time-display">25:00</div>
+        <div id="mode-label" class="mode-label">집중 시간</div>
+      </div>
 
-    <div class="controls">
-      <button id="start-btn" class="btn btn-primary" onclick="toggleTimer()">시작</button>
-      <button class="btn btn-secondary" onclick="resetTimer()">리셋</button>
-      <button class="btn btn-secondary" onclick="switchMode()">모드 전환</button>
+      <div class="clock-wrap">
+        <svg id="clock-svg" class="clock-svg" viewBox="0 0 280 280">
+          <circle cx="140" cy="140" r="122" fill="#ebebeb"/>
+          <path id="progress-path" fill="#e8716a"/>
+          <g id="ticks"></g>
+          <g id="tick-numbers"></g>
+          <circle cx="140" cy="140" r="32" fill="white"/>
+        </svg>
+        <button id="center-btn" class="center-btn" onclick="toggleTimer()">▶</button>
+      </div>
+
+      <div id="session-dots" class="session-dots"></div>
+
+      <div class="controls">
+        <button class="btn" onclick="resetTimer()">리셋</button>
+        <button class="btn btn-accent" onclick="switchMode()">모드 전환</button>
+      </div>
     </div>
   </div>
 

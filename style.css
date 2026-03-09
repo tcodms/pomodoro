@@ -1,12 +1,3 @@
-:root {
-  --bg: #f5f5f0;
-  --surface: #ffffff;
-  --accent: #e94560;
-  --accent-break: #0f9b8e;
-  --text: #2d2d2d;
-  --text-muted: #999;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -14,152 +5,185 @@
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Segoe UI', sans-serif;
+  background: #e8e8e8;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-.container {
+/* 맥 스타일 윈도우 */
+.window {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  width: 360px;
+}
+
+.window-bar {
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.traffic-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.traffic-dot.red    { background: #ff5f57; }
+.traffic-dot.yellow { background: #febc2e; }
+.traffic-dot.green  { background: #28c840; }
+
+/* 앱 본문 */
+.app {
+  padding: 28px 32px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
 }
 
-.title {
-  font-size: 1.4rem;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  font-weight: 400;
+/* 시간 표시 */
+.time-section {
+  text-align: center;
 }
 
-/* 원형 타이머 */
-.timer-ring {
+.time-display {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.mode-label {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #e8716a;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+body.break-mode .mode-label {
+  color: #0f9b8e;
+}
+
+/* 클락페이스 */
+.clock-wrap {
   position: relative;
   width: 240px;
   height: 240px;
 }
 
-.progress-ring {
+.clock-svg {
   width: 100%;
   height: 100%;
-  transform: rotate(-90deg);
 }
 
-.progress-ring__bg {
-  fill: none;
-  stroke: #e8e8e8;
-  stroke-width: 10;
-}
-
-.progress-ring__fill {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 10;
-  stroke-linecap: round;
-  stroke-dasharray: 565.49;
-  stroke-dashoffset: 0;
-  transition: stroke-dashoffset 1s linear, stroke 0.4s ease;
-}
-
-body.break-mode .progress-ring__fill {
-  stroke: var(--accent-break);
-}
-
-.timer-content {
+/* 중앙 재생 버튼 */
+.center-btn {
   position: absolute;
   inset: 0;
+  margin: auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #222;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  transition: transform 0.1s, box-shadow 0.1s;
 }
 
-#mode-label {
-  font-size: 0.85rem;
-  color: var(--accent);
-  letter-spacing: 0.08em;
-  transition: color 0.4s ease;
+.center-btn:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+  transform: scale(1.05);
 }
 
-body.break-mode #mode-label {
-  color: var(--accent-break);
+.center-btn:active {
+  transform: scale(0.97);
 }
 
-#time-display {
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+body.break-mode #progress-path {
+  fill: #0f9b8e;
 }
 
 /* 세션 점 */
 .session-dots {
   display: flex;
-  gap: 12px;
+  gap: 10px;
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: #e8e8e8;
-  border: 2px solid #ccc;
-  transition: background 0.3s ease, border-color 0.3s ease;
+  background: #e0e0e0;
+  transition: background 0.3s ease;
 }
 
 .dot.filled {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: #e8716a;
 }
 
 body.break-mode .dot.filled {
-  background: var(--accent-break);
-  border-color: var(--accent-break);
+  background: #0f9b8e;
 }
 
-/* 버튼 */
+/* 하단 버튼 */
 .controls {
   display: flex;
-  gap: 12px;
+  gap: 10px;
+  width: 100%;
 }
 
 .btn {
-  padding: 12px 24px;
-  border: none;
+  flex: 1;
+  padding: 11px 0;
+  border: 1.5px solid #e0e0e0;
   border-radius: 8px;
-  font-size: 0.95rem;
+  background: #fafafa;
+  color: #333;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: opacity 0.2s, transform 0.1s;
+  transition: background 0.15s, transform 0.1s;
 }
 
 .btn:hover {
-  opacity: 0.85;
-  transform: translateY(-1px);
+  background: #f0f0f0;
 }
 
 .btn:active {
-  transform: translateY(0);
+  transform: scale(0.98);
 }
 
-.btn-primary {
-  background: var(--accent);
-  color: #fff;
+.btn-accent {
+  background: #e8716a;
+  border-color: #e8716a;
+  color: white;
   font-weight: 600;
-  min-width: 90px;
 }
 
-body.break-mode .btn-primary {
-  background: var(--accent-break);
+.btn-accent:hover {
+  background: #d96059;
 }
 
-.btn-secondary {
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid #ddd;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+body.break-mode .btn-accent {
+  background: #0f9b8e;
+  border-color: #0f9b8e;
+}
+
+body.break-mode .btn-accent:hover {
+  background: #0d8a7e;
 }
